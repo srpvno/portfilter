@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Port Filter</title>
+        <meta name="description" content="An interactive search spot for filtering port numbers">
+        <link rel="stylesheet" type="text/css" href="/main.css">
+
+    </head>
+
+    <body>
+        <h1> Port Filter </h1> 
+        <h4> created by vno </h4>
+        <h2> About </h2>
+        <p>description</p>
+        
+        <input type="text" id="portInput" onkeyup="filterPort()" placeholder="Search port number...">
+
+        <input type="text" id="protocolInput" onkeyup="filterProtocol()" placeholder="Search protocol...">
+
+        <input type="text" id="nameInput" onkeyup="filterName()" placeholder="Search service name...">
+        
+        <table id="filterTable">
+            <tr>
+                <th>Port Number</th>
+                <th>Transport Protocol</th> 
+                <th>Service Name</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>TCP</td> 
+                <td>File Transfer Protocol - Data</td>
+                <td>Once port 21 has established the connection, this port is used to transfer data files across the ports.</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>TCP</td> 
+                <td>File Transfer Protocol - Control/Command</td>
+                <td>Establishes the connection as well as user authentication between ports before the files can actually be sent across.</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>Both</td>
+                <td>Secure Shell (SSH)</td>
+                <td>SSH is a cryptographic network protocol for operating network services securely over an unsecured network. Typical applications include remote cmd login and execution, but any network can be secured with SSH. 
+                    <br>
+                    <i>Files leaked by Edward Snowden, however, indicate that the NSA can sometimes decrypt SSH, allowing them to read the contents of SSH sessions.</i> 
+                </td>
+            </tr>a
+            <tr>
+                <td>23</td>
+                <td>TCP</td>
+                <td>Telnet</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>TCP</td>
+                <td>Simple Mail Transfer Protocol (SMTP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>50</td>
+                <td>#</td>
+                <td>IPSec</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>51</td>
+                <td>#</td>
+                <td>IPSec</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>53</td>
+                <td>Both</td>
+                <td>Domain Name Server (DNS)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>67</td>
+                <td>UDP</td>
+                <td>Dynamic Host Configuration Protocol (DHCP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>68</td>
+                <td>UDP</td>
+                <td>Dynamic Host Configuration Protocol (DHCP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>69</td>
+                <td>UDP</td>
+                <td>Trivial File Transfer Protocol (TFTP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>80</td>
+                <td>TCP</td>
+                <td>HyperText Transfer Protocol (HTTP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>110</td>
+                <td>TCP</td>
+                <td>Post Office Protocol (POP3)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>119</td>
+                <td>TCP</td>
+                <td>Networks News Transport Protocol (NNTP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>123</td>
+                <td>UDP</td>
+                <td>Network Time Protocol (NTP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>135-139</td>
+                <td>Both</td>
+                <td>NetBIOS</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>143</td>
+                <td>Both</td>
+                <td>Internet Message Access Protocol (IMAP4)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>161</td>
+                <td>TCP</td>
+                <td>Simple Network Management Protocol (SNMP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>162</td>
+                <td>UDP</td>
+                <td>Simple Network Management Protocol (SNMP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>389</td>
+                <td>Both</td>
+                <td>Lightweight Directory Access Protocol (LDAP)</td>
+                <td>#</td>
+            </tr>
+            <tr>
+                <td>443</td>
+                <td>Both</td>
+                <td>HTTP with SSL</td>
+                <td>#</td>
+            </tr>
+        </table> 
+
+        <script>
+            function filterPort() {
+                // Declare variables 
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("portInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("filterTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    } 
+                }
+            }
+            function filterName() {
+                // Declare variables 
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("nameInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("filterTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[2];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    } 
+                }
+            }
+            function filterProtocol() {
+                // Declare variables 
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("protocolInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("filterTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    } 
+                }
+            }
+        </script>
+
+    </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
