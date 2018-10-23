@@ -3,21 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Port Filter</title>
+        <title>Port 65536</title>
         <meta name="description" content="An interactive search spot for filtering port numbers">
         <link rel="stylesheet" type="text/css" href="/main.css">
 
     </head>
 
     <body>
-        <h1> Port Filter </h1> 
+        <h1> Port 65536 </h1> 
         <h4> created by vno </h4>
         <h2> About </h2>
         <p>description</p>
-        
-        <input type="text" id="portInput" onkeyup="filterPort()" placeholder="Search port number...">
 
-        <input type="text" id="protocolInput" onkeyup="filterProtocol()" placeholder="Search protocol...">
+        <input type="text" id="portInput" onkeyup="filterPort()" placeholder="Search port number...">
 
         <input type="text" id="nameInput" onkeyup="filterName()" placeholder="Search service name...">
         
@@ -53,43 +51,36 @@
                 <td>23</td>
                 <td>TCP</td>
                 <td>Telnet</td>
-                <td>#</td>
+                <td>Telnet services essentially offer to accept remote console terminal connection from any client device across the Internet. This makes Telnet quite powerful and, without proper security, a significant security concern. 
+                    <br>
+                    <i>Due to the tremendous potential for abuse, hackers generally take an immediate interest in any system that is presenting an open Telnet port to the Internet. Make sure to shut down any open Telnet port on your system!</i></td>
             </tr>
             <tr>
                 <td>25</td>
                 <td>TCP</td>
                 <td>Simple Mail Transfer Protocol (SMTP)</td>
-                <td>#</td>
+                <td>SMTP is the protocol used to shuttle email across the Internet from one mail server to another. SMTP servers open and listen for incoming connection on port 25. Another SMTP server, or a personal email client, will connect to the server on its port 25 to transfer some email into it for subsequent forwarding toward its destination.</td>
             </tr>
             <tr>
-                <td>50</td>
+                <td>50, 51</td>
                 <td>#</td>
                 <td>IPSec</td>
-                <td>#</td>
-            </tr>
-            <tr>
-                <td>51</td>
-                <td>#</td>
-                <td>IPSec</td>
-                <td>#</td>
+                <td>This is used mainly over VPNs. It authenticates and encrypts the packets of data sent over an IP network.</td>
             </tr>
             <tr>
                 <td>53</td>
                 <td>Both</td>
                 <td>Domain Name Server (DNS)</td>
-                <td>#</td>
+                <td>DNS is the "glue" that translates human-readable domain names into their IP address equivalents. Incoming UDP packets carry queries which expect a short reply and TCP connections carry queries requiring longer and more complete replies.</td>
             </tr>
             <tr>
-                <td>67</td>
+                <td>67, 68</td>
                 <td>UDP</td>
                 <td>Dynamic Host Configuration Protocol (DHCP)</td>
-                <td>#</td>
-            </tr>
-            <tr>
-                <td>68</td>
-                <td>UDP</td>
-                <td>Dynamic Host Configuration Protocol (DHCP)</td>
-                <td>#</td>
+                <td>This is how your computer gets it unique IP address. When a system starts up on a network, it must first request an IP address (assuming it is not using a static IP address), and it does this by the broadcast request. 
+                    <br>
+                    <i>Ports 67 and 68 are used in order to specify the request (68) and tell the server (67) to reply back.</i>
+                </td>
             </tr>
             <tr>
                 <td>69</td>
@@ -191,26 +182,6 @@
                 // Loop through all table rows, and hide those who don't match the search query
                 for (i = 0; i < tr.length; i++) {
                     td = tr[i].getElementsByTagName("td")[2];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    } 
-                }
-            }
-            function filterProtocol() {
-                // Declare variables 
-                var input, filter, table, tr, td, i;
-                input = document.getElementById("protocolInput");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("filterTable");
-                tr = table.getElementsByTagName("tr");
-
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[1];
                     if (td) {
                         if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                             tr[i].style.display = "";
