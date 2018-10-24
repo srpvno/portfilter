@@ -1,0 +1,65 @@
+
+h1 {
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Krub', sans-serif;
+}
+
+h3 {
+    text-align: center;
+    font-family: 'Krub', sans-serif;
+}
+
+table {
+    text-align: center;
+    border-style: groove;
+    border-radius: 30px;
+    padding: 20px;
+    font-family: 'Krub', sans-serif;
+}
+
+td {
+    border-style: groove;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+body {
+    padding-top: 25px;
+    padding-bottom: 50px;
+    padding-left: 37px;
+    padding-right: 37px;
+}
+
+
+#nameInput {
+    float: right;
+    margin-right: 150px;
+    width: 300px;
+}
+
+#portInput {
+    float: left;
+    margin-left: 150px;
+    width: 300px;
+}
+
+p {
+    font-family: 'Krub', sans-serif;
+}
+
+#portName {
+    text-align: center;
+}
+
+#ftheader {
+    padding: 50px;
+    font-size: 20px;
+    border-style: hidden;
+}

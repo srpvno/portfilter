@@ -5,37 +5,41 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Port 65536</title>
         <meta name="description" content="An interactive search spot for filtering port numbers">
-        <link rel="stylesheet" type="text/css" href="/main.css">
-
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Krub">
+        <script type="text/javascript" src="filter.js"></script>
     </head>
 
     <body>
-        <h1> Port 65536 </h1> 
-        <h4> created by vno </h4>
-        <h2> About </h2>
-        <p>description</p>
+        <h1><u> Port 65536 </u></h1> 
+        <h3> <i>created by vno</i> </h3>
+        <p> I made this port filter for personal use, as a way to study the common port numbers as well as keep track of any important ones when it comes to the basics of networking fundamentals. Also, it's a useful tool to quickly search between port numbers and the service names associated with it. </p>
+        
+        <p id="portName">Port: &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; Name: </p>
+        
+        <input type="text" id="portInput" autofocus="autofocus" onkeyup="filterPort()" placeholder="Search by port number...">
 
-        <input type="text" id="portInput" onkeyup="filterPort()" placeholder="Search port number...">
-
-        <input type="text" id="nameInput" onkeyup="filterName()" placeholder="Search service name...">
+        <input type="text" id="nameInput" onkeyup="filterName()" placeholder="Search by service name...">
+        
+         <br><br><br><br>
         
         <table id="filterTable">
-            <tr>
-                <th>Port Number</th>
-                <th>Transport Protocol</th> 
-                <th>Service Name</th>
-                <th>Description</th>
+            <tr id="ftheader" cellspacing="10">
+                <th><u>Port Number</u></th>
+                <th><u>Transport Protocol</u></th> 
+                <th><u>Service Name</u></th>
+                <th><u>Description</u></th>
             </tr>
             <tr>
                 <td>20</td>
                 <td>TCP</td> 
-                <td>File Transfer Protocol - Data</td>
+                <td>File Transfer Protocol - Data (FTP)</td>
                 <td>Once port 21 has established the connection, this port is used to transfer data files across the ports.</td>
             </tr>
             <tr>
                 <td>21</td>
                 <td>TCP</td> 
-                <td>File Transfer Protocol - Control/Command</td>
+                <td>File Transfer Protocol - Control/Command (FTP)</td>
                 <td>Establishes the connection as well as user authentication between ports before the files can actually be sent across.</td>
             </tr>
             <tr>
@@ -46,7 +50,7 @@
                     <br>
                     <i>Files leaked by Edward Snowden, however, indicate that the NSA can sometimes decrypt SSH, allowing them to read the contents of SSH sessions.</i> 
                 </td>
-            </tr>a
+            </tr>
             <tr>
                 <td>23</td>
                 <td>TCP</td>
@@ -86,43 +90,43 @@
                 <td>69</td>
                 <td>UDP</td>
                 <td>Trivial File Transfer Protocol (TFTP)</td>
-                <td>#</td>
+                <td>TFTP is a simple protocol that allows a client to place or grab a file form a remote host. It is used to transfer firmware images and configuration files to network appliances like routers, firewalls, IP phones, etc. It's the protocol of choice for the initial stages of any network booting strategy like BOOTP, PXE, BSDP, etc.</td>
             </tr>
             <tr>
                 <td>80</td>
                 <td>TCP</td>
                 <td>HyperText Transfer Protocol (HTTP)</td>
-                <td>#</td>
+                <td>The default port number for a Web server. Experimental services may sometimes be run at port 8080.</td>
             </tr>
             <tr>
                 <td>110</td>
                 <td>TCP</td>
                 <td>Post Office Protocol (POP3)</td>
-                <td>#</td>
+                <td>A client pulls emails from the email server. By doing so, a local file is stored [PST] on the local device. The email server has now removed specified email from its server and thus, is only present on the local device.</td>
             </tr>
             <tr>
                 <td>119</td>
                 <td>TCP</td>
                 <td>Networks News Transport Protocol (NNTP)</td>
-                <td>#</td>
+                <td>Port 119 hosts the servers of the famous and infamous Internet USENET newsgroup world. NNTP servers push and pull news articles to and from other NNTP servers over port 119, and news reading (and writing) clients talking to news servers over the same port.</td>
             </tr>
             <tr>
                 <td>123</td>
                 <td>UDP</td>
                 <td>Network Time Protocol (NTP)</td>
-                <td>#</td>
+                <td>The NTP is a clean, simple, lightweight and efficient protocol allowing clients to query servers for the current time (including the date), thus, allowing every client in various timezones to sync properly.</td>
             </tr>
             <tr>
-                <td>135-139</td>
+                <td>137-139</td>
                 <td>Both</td>
                 <td>NetBIOS</td>
-                <td>#</td>
+                <td>In the name of backward compatibility, Windows 2000 and later OS's continued to suppor tthe original NetBIOS port trio. However, they've now moved their NetBIOS services over to port 445 - but have now created even more serious security problems with that port.</td>
             </tr>
             <tr>
                 <td>143</td>
                 <td>Both</td>
                 <td>Internet Message Access Protocol (IMAP4)</td>
-                <td>#</td>
+                <td>A client pulls an email from the email server and creates a local copy unto the local device. Any changes on the local device will sync with the email server. The email server saves a copy unto the server itself. Thus, if the client decides to switch devices, it can pull the any changed data from the email server once again.</td>
             </tr>
             <tr>
                 <td>161</td>
@@ -140,61 +144,22 @@
                 <td>389</td>
                 <td>Both</td>
                 <td>Lightweight Directory Access Protocol (LDAP)</td>
-                <td>#</td>
+                <td>LDAP is a modern and popular Internet directory access protocol used by many systems and services. Most Windows users will encounter it due to the port running while it is open.</td>
             </tr>
             <tr>
                 <td>443</td>
                 <td>Both</td>
-                <td>HTTP with SSL</td>
-                <td>#</td>
+                <td>HTTP with SSL (HTTPS)</td>
+                <td>This port is used for secure web browser communication. Data transferred across such connections are highly resistant to eavesdropping and interception. Moreover, the identity of the remotely connected server can be verified with significant confidence. Web servers offering to accept and establish secure connections listen on this port for connections from web browsers desiring strong communication security.</td>
+            </tr>
+            <tr>
+                <td>3389</td>
+                <td>TCP</td>
+                <td>Remote Desktop Protocol (RDP)</td>
+                <td>This port is used by Microsoft's "Terminal Server" which was renamed to Remote Desktop for their appearnace in Windows XP.</td>
             </tr>
         </table> 
-
-        <script>
-            function filterPort() {
-                // Declare variables 
-                var input, filter, table, tr, td, i;
-                input = document.getElementById("portInput");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("filterTable");
-                tr = table.getElementsByTagName("tr");
-
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[0];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    } 
-                }
-            }
-            function filterName() {
-                // Declare variables 
-                var input, filter, table, tr, td, i;
-                input = document.getElementById("nameInput");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("filterTable");
-                tr = table.getElementsByTagName("tr");
-
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[2];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    } 
-                }
-            }
-        </script>
-
     </body>
-
 </html>
 
 
